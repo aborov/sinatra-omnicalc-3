@@ -24,6 +24,9 @@ post("/process_umbrella") do
       lat_lng = gmaps_parsed['results'][0]['geometry']['location']
       @latitude = lat_lng['lat']
       @longitude = lat_lng['lng']
+      cookies["last_location"] = @user_location
+      cookies["last_lat"] = @latitude
+      cookies["last_lng"] = @longitude
     else
       puts "Sorry, we can't get your location coordinates at the moment. Try later."
       exit
